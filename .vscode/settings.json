@@ -1,0 +1,15 @@
+{
+    "java.project.referencedLibraries": [
+        "lib/**/*.jar",
+        "c:\\apache-tomcat-9.0.80\\lib\\servlet-api.jar",
+        "c:\\Program Files (x86)\\MySQL\\mysql-connector-j-8.1.0\\mysql-connector-j-8.1.0.jar",
+        "WEB-INF/lib/mysql-connector-java-8.0.13.jar",
+        "WEB-INF/lib/commons-logging-1.0.4.jar",
+        "WEB-INF/lib/freemarker-2.3.8.jar",
+        "WEB-INF/lib/jstl.jar",
+        "WEB-INF/lib/ognl-2.6.11.jar",
+        "WEB-INF/lib/struts2-core-2.0.11.jar",
+        "WEB-INF/lib/xwork-2.0.4.jar"
+    ],
+    "java.project.outputPath": "WEB-INF\\classes"
+}
