@@ -7,8 +7,13 @@
 
 	<action name="registerUser" class="Registration" method="register">
     <result name="success">/login.jsp</result>
-    <result name="error">/showNameFromSession.jsp</result>
+    <result name="error">/index.jsp</result>
 </action>
+
+ <action name="loginUser" class="Login" method="login">
+        <result name="success">/navigation.jsp</result>
+        <result name="error">/login.jsp</result>
+    </action>
 		
     </package>
 </struts>
