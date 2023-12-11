@@ -40,15 +40,30 @@
 
             <s:textfield name="email" id="email" label="email" required="true"/>
 
+            <s:textfield name="username" id="username" label="username" required="true"/>
+
             <s:password name="password" id="password" label="Password" required="true"/>
             
             <s:password name="confirmPassword" id="confirmPassword" label="Confirm Password" required="true"/>
             
             <div id="passwordError">Password does not match</div>
 
-            <input type="submit" value="Register" />
+            <s:submit value="Register" />
         </s:form>
+        <p>Already have an account? <a href="login.jsp">Login</a></p>
     </div>
-		
+		 
+         
     </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+

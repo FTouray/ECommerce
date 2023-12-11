@@ -17,7 +17,7 @@ public class Registration extends ActionSupport {
     }
 
     public String register() {
-       String result = "failure";
+       
         Connection connection = null;
         try {
             try {
@@ -32,7 +32,7 @@ public class Registration extends ActionSupport {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
-
+ 
 
         try {
               // Create the SQL query to insert user data
@@ -46,17 +46,25 @@ public class Registration extends ActionSupport {
 
                 // Execute the query
                 preparedStatement.executeUpdate();
+
+                 // Clear the form fields after successful registration
+            setUsername("");
+            setPassword("");
+            setEmail("");
+            setFirstName("");
+            setLastName("");
             }
 
             // Close the database connection
             connection.close();
 
-            result = "success";
+           return SUCCESS;
         } catch (Exception e) {
             e.printStackTrace();
+            return ERROR;
             
         }
-        return result;
+       
     
     }
 
@@ -99,5 +107,7 @@ public class Registration extends ActionSupport {
     public void setPassword(String password) {
         this.password = password;
     }
+
+    
     
 }
