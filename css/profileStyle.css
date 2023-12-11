@@ -1,0 +1,137 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+
+.header-content {
+    text-align: center;
+}
+
+h1 {
+    margin: 0;
+}
+
+.logged-in {
+    margin-top: 5px;
+    color: #e3dede;
+}
+
+
+header {
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    padding: 10px;
+    background-color: #4398b5;
+    color: white;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    background-color: white;
+    padding: 10px;
+}
+
+
+.dropdown {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.tbar {
+    background-size: contain;
+    transition: 0.2s;
+}
+
+.tbar img{
+    width: 30px;
+    height: 30px;
+    margin-left: 5px;
+}
+
+
+
+.dropdown.profile {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.profileIcon {
+    background-size: contain;
+    transition: 0.2s;
+}
+
+.profileIcon img {
+    width: 30px;
+    height: 30px;
+    margin-left: 5px;
+}
+
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    top: 100%;
+    left: 0;
+}
+
+.dropdown-content a {
+    display: block;
+    padding: 10px;
+    text-decoration: none;
+    color: #333;
+    white-space: nowrap;
+}
+
+.dropdown.profile .profile-content {
+    right: 0;
+    left: auto;
+}
+
+.dropdown-content a:hover {
+    background-color: #ddd;
+}
+
+.profileDetails{
+    max-width: 600px;
+    margin: 20px auto;
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    color: #333;
+}
+
+p {
+    margin: 10px 0;
+}
+
+strong {
+    font-weight: bold;
+}
+
+s\:form {
+    margin-top: 20px;
+}
+
+/* Customize form styles based on your needs */
+s\:form input[type="submit"] {
+    background-color: #333;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
