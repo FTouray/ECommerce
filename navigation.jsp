@@ -24,18 +24,17 @@
     <div class="dropdown" onclick="toggleDropdown('bidsDropdown', event)">
         <span class="tbar">  <img src="images/triple bar.png" alt="Triple Bar Icon" ></span>
         <div id="bidsDropdown" class="dropdown-content">
-            <a href="#">View My Bids</a>
-            <a href="#">View All Bids</a>
+            <s:a href="viewMyBids.jsp">View My Bids</s:a>
+            <s:a href="viewAllBids.jsp">View All Bids</s:a>
         </div>
     </div>
 
     <div class="dropdown profile" onclick="toggleDropdown('profileDropdown', event)">
       <span class="profileIcon">  <img src="images/profile.png" alt="Profile Icon" ></span>
         <div id="profileDropdown" class="dropdown-content">
-            <a href="#">View My Profile</a>
-            <a href="#">View Other Profiles</a>
-            <a href="#">View All Users</a>
-            <a href="#">Logout</a>
+            <s:a href="viewMyProfile.jsp">View My Profile</s:a>
+            <s:a href="viewAllUsers.jsp">View All Users</s:a>
+            <s:a href="logout">Logout</s:a>
         </div>
     </div>
 </nav>

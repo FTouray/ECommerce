@@ -20,11 +20,11 @@
 
         <s:form action="loginUser" method="post">
            
-            <s:textfield name="username" id="username" label="username" required="true"/>
+            <s:textfield name="username" id="username" label="Username" required="true"/>
 
             <s:password name="password" id="password" label="Password" required="true"/>
         
-            <s:submit value="login"/>
+            <s:submit value="Login"/>
         </s:form>
 
         <p>Don't have an account? <a href="login.jsp">Login</a></p>

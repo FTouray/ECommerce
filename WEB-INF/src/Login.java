@@ -47,14 +47,18 @@ public class Login extends ActionSupport implements SessionAware {
                 preparedStatement.setString(1, username);
 
                 // Execute the query
-                ResultSet resultSet = preparedStatement.executeQuery();
-
+                ResultSet resultSet = preparedStatement.executeQuery(); 
+                int userId = resultSet.getInt("user_id");
+                String storedPassword = resultSet.getString("password");
                 // Check if a matching user is found
                 if (resultSet.next()) {
                     
-                    if (password.equals(resultSet.getString("password"))){
-                            // Store the username in the session
+                    if (password.equals(resultSet.getString(storedPassword))){
+                         
+                        // Store the username in the session
                         session.put("currentUser", username);
+                        session.put("currentUserId", userId);
+
                          result = SUCCESS;
                     } else {
                         addActionError("Incorrect password");
@@ -100,7 +104,6 @@ public class Login extends ActionSupport implements SessionAware {
     @Override
     public void setSession(Map map) {
         session = map;
-
     }
 }
 
