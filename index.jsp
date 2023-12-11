@@ -42,6 +42,8 @@
 
             <s:textfield name="username" id="username" label="username" required="true"/>
 
+           
+
             <s:password name="password" id="password" label="Password" required="true"/>
             
             <s:password name="confirmPassword" id="confirmPassword" label="Confirm Password" required="true"/>
@@ -56,14 +58,3 @@
          
     </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-

@@ -1,6 +1,7 @@
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import com.opensymphony.xwork2.ActionSupport;
 
@@ -35,6 +36,13 @@ public class Registration extends ActionSupport {
  
 
         try {
+
+            if (isUsernameExists(username)) {
+                addActionError("Username already exists. Please choose a different username.");
+                return INPUT;
+            }
+
+
               // Create the SQL query to insert user data
             String sql = "INSERT INTO users (username, password, email, firstName, lastName) VALUES (?, ?, ?, ?, ?)";
             try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
@@ -66,6 +74,31 @@ public class Registration extends ActionSupport {
         }
        
     
+    }
+
+     private boolean isUsernameExists(String username) throws SQLException {
+        Connection connection = null;
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            connection = DriverManager.getConnection(
+                    "jdbc:mysql://localhost:3306/auction?serverTimezone=UTC", "root", "root");
+
+            String sql = "SELECT COUNT(*) FROM users WHERE username = ?";
+            try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+                preparedStatement.setString(1, username);
+                ResultSet resultSet = preparedStatement.executeQuery();
+                resultSet.next();
+                int count = resultSet.getInt(1);
+                return count > 0;
+            }
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+            return false;
+        } finally {
+            if (connection != null) {
+                connection.close();
+            }
+        }
     }
 
     public String getFirstName() {
