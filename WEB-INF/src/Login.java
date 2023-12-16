@@ -22,8 +22,6 @@ public class Login extends ActionSupport implements SessionAware {
 
     public String login() {
 
-        String result=  ERROR;
-
         Connection connection = null;
         try {
             try {
@@ -39,42 +37,46 @@ public class Login extends ActionSupport implements SessionAware {
             e.printStackTrace();
         }
 
-        try{
-          
-            // Prepare the SQL statement
+        try {
             String sql = "SELECT * FROM users WHERE username = ?";
             try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
                 preparedStatement.setString(1, username);
-
+    
                 // Execute the query
-                ResultSet resultSet = preparedStatement.executeQuery(); 
-                int userId = resultSet.getInt("user_id");
-                String storedPassword = resultSet.getString("password");
+                ResultSet resultSet = preparedStatement.executeQuery();
+    
                 // Check if a matching user is found
                 if (resultSet.next()) {
-                    
-                    if (password.equals(resultSet.getString(storedPassword))){
-                         
+                    int userId = resultSet.getInt("user_id");
+                    String storedPassword = resultSet.getString("password");
+    
+                    if (password.equals(storedPassword)) {
                         // Store the username in the session
                         session.put("currentUser", username);
                         session.put("currentUserId", userId);
-
-                         result = SUCCESS;
+                        return SUCCESS;
                     } else {
                         addActionError("Incorrect password");
+                        return ERROR;
                     }
-                   
                 } else {
                     addActionError("Account not found");
+                    return ERROR;
                 }
             }
         } catch (Exception e) {
             e.printStackTrace();
             return ERROR;
-            
+        } finally {
+            // Close the connection in a finally block to ensure it's closed
+            try {
+                if (connection != null) {
+                    connection.close();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
-
-        return result;
     }
 
     // Getter and Setter methods

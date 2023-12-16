@@ -101,6 +101,9 @@ public class Registration extends ActionSupport {
         }
     }
 
+    
+
+
     public String getFirstName() {
         return firstName;
     }
