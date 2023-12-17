@@ -11,7 +11,7 @@
 <body>
 
 
-<header>
+ <header>
     <div class="header-content">
         <h1>Luxe</h1>
         <div class="logged-in">
@@ -21,7 +21,7 @@
     </header>
    
    <nav>
-    <div class="dropdown" onclick="toggleDropdown('bidsDropdown', event)">
+      <div class="dropdown" onclick="toggleDropdown('bidsDropdown', event)">
         <span class="tbar">  <img src="images/triple bar.png" alt="Triple Bar Icon" ></span>
         <div id="bidsDropdown" class="dropdown-content">
             <s:a href="viewMyBids.jsp">View My Bids</s:a>
@@ -29,17 +29,26 @@
         </div>
     </div>
 
+     
+    <div class="add-items-button">
+        <a href="addItem.jsp">Add Items</a>
+    </div>
+
     <div class="dropdown profile" onclick="toggleDropdown('profileDropdown', event)">
       <span class="profileIcon">  <img src="images/profile.png" alt="Profile Icon" ></span>
         <div id="profileDropdown" class="dropdown-content">
-            <s:a href="viewMyProfile.jsp">View My Profile</s:a>
-            <s:a href="viewAllUsers.jsp">View All Users</s:a>
-            <s:a href="logout">Logout</s:a>
+            <a href="<s:url action="viewMyProfile"/>">View My Profile</a>
+            <a href="<s:url action="viewAllUsers"/>">View All Users</a>
+            <a href="<s:url action="logout"/>">Logout</a>
         </div>
     </div>
+   
 </nav>
 
 
+<div id="content-container">
+      <s:action name="viewAllItems" executeResult="true" />
+</div>
 
 
 <footer>

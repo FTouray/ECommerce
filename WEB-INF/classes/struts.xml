@@ -7,7 +7,8 @@
 
 	<action name="registerUser" class="Registration" method="register">
     <result name="success">/login.jsp</result>
-    <result name="error">/index.jsp</result>
+    <result name="error">/register.jsp</result>
+     <result name="input">/register.jsp</result>
 </action>
 
  <action name="loginUser" class="Login" method="login">
@@ -16,14 +17,32 @@
     </action>
 
      <action name="addItem" class="AddItems" method="add">
-        <result name="success">/addItem.jsp</result>
-        <result name="success">/addItem.jsp</result>
+        <result name="success">/navigation.jsp</result>
+        <result name="error">/addItem.jsp</result>
     </action>
 
-    
+    <action name="viewMyProfile" class="UserProfile" method="myProfile">
+    <result name="success">/viewMyProfile.jsp</result>
+    <result name="error">/error.jsp</result>
+    </action>
+
+     <action name="viewAllUsers" class="ViewAllUsers" method="viewUsers">
+    <result name="success">/viewAllUsers.jsp</result>
+    <result name="error">/error.jsp</result>
+    </action>
+
+    <action name="viewOtherProfiles" class="UserProfile" method="otherProfile">
+    <result name="success">/viewOtherProfiles.jsp</result>
+    <result name="error">/error.jsp</result>
+    </action>
+
+     <action name="viewAllItems" class="ViewItems" method="loadItems">
+    <result name="success">/viewAllItems.jsp</result>
+    <result name="error">/error.jsp</result>
+    </action>
 
     <action name="logout" class="Logout" method="execute">
-    <result type="redirect">/login.jsp</result>
+    <result type="redirectAction">/login.jsp</result>
 </action>
 		
     </package>
