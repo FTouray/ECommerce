@@ -43,6 +43,7 @@ public class ViewAllUsers extends ActionSupport {
 
                 while (resultSet.next()) {
                     User user = new User();
+                    user.setId(resultSet.getInt("user_id"));
                     user.setUsername(resultSet.getString("username"));
                     user.setPassword(resultSet.getString("password"));
                     user.setFirstName(resultSet.getString("firstName"));
@@ -63,4 +64,10 @@ public class ViewAllUsers extends ActionSupport {
     public List<User> getAllUsers() {
         return allUsers;
     }
+
+    public void setAllUsers(List<User> allUsers) {
+        this.allUsers = allUsers;
+    }
+
+    
 }

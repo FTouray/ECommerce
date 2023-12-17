@@ -7,6 +7,8 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>Navigation Page</title>
     <link rel="stylesheet" type="text/css" href="css/navigationStyle.css">
+    <script src="script/actions.js"></script>
+
 </head>
 <body>
 
@@ -37,9 +39,12 @@
     <div class="dropdown profile" onclick="toggleDropdown('profileDropdown', event)">
       <span class="profileIcon">  <img src="images/profile.png" alt="Profile Icon" ></span>
         <div id="profileDropdown" class="dropdown-content">
-            <a href="<s:url action="viewMyProfile"/>">View My Profile</a>
-            <a href="<s:url action="viewAllUsers"/>">View All Users</a>
+            <a href="#" onclick="loadContent('viewMyProfile')">View My Profile</a>
+            <a href="#" onclick="loadContent('viewAllUsers')">View All Users</a>
             <a href="<s:url action="logout"/>">Logout</a>
+
+            <input type="hidden" id="viewMyProfileUrl" value="<s:url action='viewMyProfile'/>"/>
+    <input type="hidden" id="viewAllUsersUrl" value="<s:url action='viewAllUsers'/>"/>
         </div>
     </div>
    
@@ -48,6 +53,15 @@
 
 <div id="content-container">
       <s:action name="viewAllItems" executeResult="true" />
+
+       <s:if test="#request.actionName == 'viewMyProfile'">
+        <s:action name="viewMyProfile" executeResult="true" />
+    </s:if>
+
+    <s:if test="#request.actionName == 'viewAllUsers'">
+        <s:action name="viewAllUsers" executeResult="true" />
+    </s:if>
+
 </div>
 
 

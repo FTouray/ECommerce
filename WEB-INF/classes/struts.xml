@@ -42,7 +42,7 @@
     </action>
 
     <action name="logout" class="Logout" method="execute">
-    <result type="redirectAction">/login.jsp</result>
+    <result type="redirect">/login.jsp</result>
 </action>
 		
     </package>

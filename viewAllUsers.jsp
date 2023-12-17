@@ -7,6 +7,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>View All Users</title>
+    <link rel="stylesheet" type="text/css" href="css/allUserStyle.css">
 </head>
 <body>
     <header>
@@ -30,9 +31,9 @@
     <div class="dropdown profile" onclick="toggleDropdown('profileDropdown', event)">
       <span class="profileIcon">  <img src="images/profile.png" alt="Profile Icon" ></span>
         <div id="profileDropdown" class="dropdown-content">
-            <s:a href="viewMyProfile.jsp">View My Profile</s:a>
-            <s:a href="viewAllUsers.jsp">View All Users</s:a>
-            <s:a href="logout">Logout</s:a>
+            <a href="<s:url action="viewMyProfile"/>">View My Profile</a>
+            <a href="<s:url action="viewAllUsers"/>">View All Users</a>
+            <a href="<s:url action="logout"/>">Logout</a>
         </div>
     </div>
 </nav>
@@ -53,25 +54,42 @@
             </thead>
             <tbody>
              
-                <s:iterator value="allUsers" var="user">
-                
-                     <s:if test="#user.username != #session.currentUser.username">
-                         <tr>
-                            <td><s:property value="#user.username" /></td>
-                        </tr>
-                         <td>
-                    <s:form action="viewOtherProfiles">
-                        <s:hidden name="userId" value="%{#user.userId}" />
-                        <s:submit value="View Profile" />
-                    </s:form>
-                </td>
-                    </s:if>
-                </s:iterator>
+         <s:iterator value="allUsers" >
+    <s:if test="username != #session.currentUser">
+        <tr>
+            <td><s:property value="username" /></td>
+            <td>
+                <s:form action="viewOtherProfiles" method="post">
+                    <s:hidden name="usernameProf" value="%{id}" />
+                   <s:submit value="View Profile" />
+                </s:form>
+            </td>
+        </tr>
+    </s:if>
+</s:iterator>
             </tbody>
         </table>
     </div>
 
-    <s:a action="home">Back to Home</s:a>
+<script>
+ function toggleDropdown(dropdownId, event) {
+    event.stopPropagation(); // Prevents the event from reaching the document click handler
+    
+    var dropdownOptions = document.getElementById(dropdownId);
+    dropdownOptions.style.display = (dropdownOptions.style.display === "block") ? "none" : "block";
+}
 
+// Close the dropdown if the user clicks outside of it
+window.onclick = function(event) {
+    var dropdowns = document.getElementsByClassName('dropdown-content');
+    for (var i = 0; i < dropdowns.length; i++) {
+        var dropdown = dropdowns[i];
+        if (dropdown.style.display === "block") {
+            dropdown.style.display = "none";
+        }
+    }
+}
+
+</script>
 </body>
 </html>

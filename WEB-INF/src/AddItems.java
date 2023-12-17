@@ -6,7 +6,6 @@ import java.util.Map;
 
 import org.apache.struts2.interceptor.SessionAware;
 
-import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class AddItems extends ActionSupport implements SessionAware{
@@ -41,7 +40,7 @@ public class AddItems extends ActionSupport implements SessionAware{
             int sellerId = (int) session.get("currentUserId");
 
              
-            String sql = "INSERT INTO items (itemId, description, startPrice, sellerId) VALUES (?, ?, ?, ?)";
+            String sql = "INSERT INTO items (itemName, description, startPrice, sellerId) VALUES (?, ?, ?, ?)";
             try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
                 preparedStatement.setString(1, itemName);
                 preparedStatement.setString(2, description);
@@ -50,7 +49,7 @@ public class AddItems extends ActionSupport implements SessionAware{
                 // Execute the query
                 preparedStatement.executeUpdate();
 
-         
+                session.put("addItemSuccessMessage", "Item added successfully");
             }
 
             // Close the database connection
@@ -93,6 +92,7 @@ public class AddItems extends ActionSupport implements SessionAware{
         session = map;
     }
 
+   
     
 
 }

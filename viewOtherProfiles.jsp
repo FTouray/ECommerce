@@ -6,8 +6,8 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>View My Bids</title>
-    
+    <title>View Other Profiles</title>
+    <link rel="stylesheet" type="text/css" href="css/profileStyle.css">
 </head>
 <body>
 
@@ -32,14 +32,41 @@
     <div class="dropdown profile" onclick="toggleDropdown('profileDropdown', event)">
       <span class="profileIcon">  <img src="images/profile.png" alt="Profile Icon" ></span>
         <div id="profileDropdown" class="dropdown-content">
-            <s:a href="viewMyProfile.jsp">View My Profile</s:a>
-            <s:a href="viewAllUsers.jsp">View All Users</s:a>
-            <s:a href="logout">Logout</s:a>
+            <a href="<s:url action="viewMyProfile"/>">View My Profile</a>
+            <a href="<s:url action="viewAllUsers"/>">View All Users</a>
+            <a href="<s:url action="logout"/>">Logout</a>
         </div>
     </div>
 </nav>
 
+ <div class="profileDetails">
+        <h2><s:property value="otherUser.username" />'s Profile Information</h2>
+             <p><strong>First Name:</strong> <s:property value="otherUser.firstName" /></p>
+            <p><strong>Last Name:</strong> <s:property value="otherUser.lastName" /></p>
+            <p><strong>Username:</strong> <s:property value="otherUser.username" /></p>
+            <p><strong>Email:</strong> <s:property value="otherUser.email" /></p>
+        
+    </div>
 
+<script>
+ function toggleDropdown(dropdownId, event) {
+    event.stopPropagation(); // Prevents the event from reaching the document click handler
+    
+    var dropdownOptions = document.getElementById(dropdownId);
+    dropdownOptions.style.display = (dropdownOptions.style.display === "block") ? "none" : "block";
+}
 
+// Close the dropdown if the user clicks outside of it
+window.onclick = function(event) {
+    var dropdowns = document.getElementsByClassName('dropdown-content');
+    for (var i = 0; i < dropdowns.length; i++) {
+        var dropdown = dropdowns[i];
+        if (dropdown.style.display === "block") {
+            dropdown.style.display = "none";
+        }
+    }
+}
+
+</script>
 </body>
 </html>
