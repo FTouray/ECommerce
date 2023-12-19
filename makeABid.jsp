@@ -8,6 +8,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>Add Item</title>
    <link rel="stylesheet" type="text/css" href="css/makeBidStyle.css">
+   <script src="script/actions.js"></script>
 </head>
 <body>
      <header>
@@ -74,6 +75,17 @@
 
 <div class="makeBid">
     <h2>Make A Bid</h2>
+      <s:if test="actionErrors.size() > 0">
+        <div class="error-box">
+            <s:actionerror />
+        </div>
+    </s:if>
+<s:if test="actionMessages.size() > 0">
+    <div class="action-box">
+            <s:actionmessage />
+        </div>
+</s:if>
+
     <s:form id="makeABidForm" action="submitBid" method="post">
         <s:textfield label="Bid Amount" key="myBid" name="myBid" required="true" />
          <s:hidden name="itemId" value="%{itemId}" />
@@ -81,27 +93,5 @@
     </s:form>
 </div>
 
-
-
-<script>
-    function toggleDropdown(dropdownId, event) {
-        event.stopPropagation();
-        var dropdownOptions = document.getElementById(dropdownId);
-        dropdownOptions.style.display = (dropdownOptions.style.display === "block") ? "none" : "block";
-    }
-
-    window.onclick = function(event) {
-        var dropdowns = document.getElementsByClassName('dropdown-content');
-        for (var i = 0; i < dropdowns.length; i++) {
-            var dropdown = dropdowns[i];
-            if (dropdown.style.display === "block") {
-                dropdown.style.display = "none";
-            }
-        }
-    }
-
-  
-
-</script>
 </body>
 </html>

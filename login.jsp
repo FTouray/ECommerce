@@ -45,6 +45,13 @@
                 errorElements[i].style.display = "none";
             }
         }
+
+        function hideMessageBox(messageBoxClass) {
+        var messageBox = document.querySelector(messageBoxClass);
+        messageBox.style.display = 'none';
+    }
+
+
     </script>
     </head>
     <body>
@@ -53,6 +60,18 @@
         <h1>Login</h1>
 
       Login to view your profile
+
+        <s:if test="actionErrors.size() > 0">
+        <div class="error-box">
+            <s:actionerror />
+        </div>
+    </s:if>
+
+      <s:if test="actionMessages.size() > 0">
+    <div class="action-box">
+            <s:actionmessage />
+        </div>
+</s:if>
 
         <s:form action="loginUser" method="post"  onsubmit="return validateLoginForm();" validate="false">
            

@@ -9,6 +9,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>View My Bids</title>
     <link rel="stylesheet" type="text/css" href="css/allItemsStyle.css"/>
+    <script src="script/actions.js"></script>
 </head>
 <body>
 
@@ -53,6 +54,11 @@
 
      <div>
         <h2>All Items For Sale</h2>
+<s:if test="actionMessages.size() > 0">
+    <div class="action-box">
+            <s:actionmessage />
+        </div>
+</s:if>
         
         <s:if test="#allItems.empty">
             <p>No Items available.</p>
@@ -79,26 +85,7 @@
     </div>
 </body>
 </html>
-<script>
- function toggleDropdown(dropdownId, event) {
-    event.stopPropagation(); // Prevents the event from reaching the document click handler
-    
-    var dropdownOptions = document.getElementById(dropdownId);
-    dropdownOptions.style.display = (dropdownOptions.style.display === "block") ? "none" : "block";
-}
-
-// Close the dropdown if the user clicks outside of it
-window.onclick = function(event) {
-    var dropdowns = document.getElementsByClassName('dropdown-content');
-    for (var i = 0; i < dropdowns.length; i++) {
-        var dropdown = dropdowns[i];
-        if (dropdown.style.display === "block") {
-            dropdown.style.display = "none";
-        }
-    }
-}
 
 
-</script>
 </body>
 </html>

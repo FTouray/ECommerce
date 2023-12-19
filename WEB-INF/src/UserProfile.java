@@ -9,10 +9,9 @@ import java.util.Map;
 
 import org.apache.struts2.interceptor.SessionAware;
 
-
 import com.opensymphony.xwork2.ActionSupport;
 
-public class UserProfile extends ActionSupport implements SessionAware{
+public class UserProfile extends ActionSupport implements SessionAware {
     private User myUser;
     private User otherUser;
     private Map<String, Object> session;
@@ -24,8 +23,6 @@ public class UserProfile extends ActionSupport implements SessionAware{
     public User getMyUser() {
         return myUser;
     }
-
-   
 
     public String myProfile() {
         Connection connection = null;
@@ -61,7 +58,7 @@ public class UserProfile extends ActionSupport implements SessionAware{
             }
 
             Integer currentUserId = (Integer) session.get("currentUserId");
-             String sqlItems = "SELECT * FROM items WHERE sellerId = ?";
+            String sqlItems = "SELECT * FROM items WHERE sellerId = ?";
             try (PreparedStatement preparedStatement = connection.prepareStatement(sqlItems)) {
                 preparedStatement.setInt(1, currentUserId);
 
@@ -72,16 +69,15 @@ public class UserProfile extends ActionSupport implements SessionAware{
                     myItem.setDescription(resultSet.getString("description"));
                     myItem.setCurrentBid(resultSet.getDouble("currentBid"));
                     myItem.setStartPrice(resultSet.getDouble("startPrice"));
-                
+
                     myItems.add(myItem);
                 }
 
             }
 
-
-
         } catch (Exception e) {
             e.printStackTrace();
+            return ERROR;
         } finally {
             try {
                 if (connection != null) {
@@ -95,8 +91,8 @@ public class UserProfile extends ActionSupport implements SessionAware{
         return SUCCESS;
     }
 
-     public String otherProfile() {
-        
+    public String otherProfile() {
+
         Connection connection = null;
         try {
             try {
@@ -112,9 +108,8 @@ public class UserProfile extends ActionSupport implements SessionAware{
             e.printStackTrace();
         }
 
-
         try {
-            
+
             String sql = "SELECT * FROM users WHERE user_id = ?";
             try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
                 preparedStatement.setInt(1, idProf);
@@ -132,7 +127,7 @@ public class UserProfile extends ActionSupport implements SessionAware{
 
             otherItems = new ArrayList<>();
 
-                  String sqlOther = "SELECT * FROM items WHERE sellerId = ?";
+            String sqlOther = "SELECT * FROM items WHERE sellerId = ?";
             try (PreparedStatement preparedStatement = connection.prepareStatement(sqlOther)) {
                 preparedStatement.setInt(1, idProf);
 
@@ -143,7 +138,7 @@ public class UserProfile extends ActionSupport implements SessionAware{
                     otherItem.setDescription(resultSet.getString("description"));
                     otherItem.setCurrentBid(resultSet.getDouble("currentBid"));
                     otherItem.setStartPrice(resultSet.getDouble("startPrice"));
-                
+
                     otherItems.add(otherItem);
                 }
 
@@ -152,10 +147,10 @@ public class UserProfile extends ActionSupport implements SessionAware{
             otherBids = new ArrayList<>();
 
             String sqlBid = "SELECT b.bidId, b.bidderId, b.itemId, b.bidAmount, b.bidDate, " +
-            "i.itemName, i.description, i.startPrice, i.currentBid " +
-            "FROM bids b " +
-            "INNER JOIN items i ON b.itemId = i.itemId " +
-            "WHERE b.bidderId = ?";
+                    "i.itemName, i.description, i.startPrice, i.currentBid " +
+                    "FROM bids b " +
+                    "INNER JOIN items i ON b.itemId = i.itemId " +
+                    "WHERE b.bidderId = ?";
             try (PreparedStatement preparedStatement = connection.prepareStatement(sqlBid)) {
                 // Replace 1 with the actual user_id of the logged-in user
                 preparedStatement.setInt(1, idProf);
@@ -172,19 +167,17 @@ public class UserProfile extends ActionSupport implements SessionAware{
                     otherBid.setItemName(resultSet.getString("itemName"));
                     otherBid.setDescription(resultSet.getString("description"));
                     otherBid.setStartPrice(resultSet.getDouble("startPrice"));
-                     otherBid.setCurrentBid(resultSet.getDouble("currentBid"));
+                    otherBid.setCurrentBid(resultSet.getDouble("currentBid"));
 
                     otherBids.add(otherBid);
                 }
-        } 
-    }catch (Exception e) {
+            }
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
         return SUCCESS;
     }
-    
-
 
     @Override
     public void setSession(Map map) {
@@ -207,8 +200,6 @@ public class UserProfile extends ActionSupport implements SessionAware{
         return session;
     }
 
-
-
     public int getIdProf() {
         return idProf;
     }
@@ -217,41 +208,28 @@ public class UserProfile extends ActionSupport implements SessionAware{
         this.idProf = idProf;
     }
 
-
-
     public List<Items> getMyItems() {
         return myItems;
     }
-
-
 
     public void setMyItems(List<Items> myItems) {
         this.myItems = myItems;
     }
 
-
-
     public List<Items> getOtherItems() {
         return otherItems;
     }
-
-
 
     public void setOtherItems(List<Items> otherItems) {
         this.otherItems = otherItems;
     }
 
-
-
     public List<Bid> getOtherBids() {
         return otherBids;
     }
-
-
 
     public void setOtherBids(List<Bid> otherBids) {
         this.otherBids = otherBids;
     }
 
-    
 }

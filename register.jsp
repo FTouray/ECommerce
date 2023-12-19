@@ -9,7 +9,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Registration</title>
         <link rel="stylesheet" type="text/css" href="css/registrationStyle.css">
-
+<script src="script/actions.js"></script>
          <script>
         function checkPasswordMatch() {
             var password = document.getElementById("password").value;
@@ -31,6 +31,21 @@
         <h1>Registration</h1>
 
       Enter your details below to register
+
+ 
+              <s:if test="actionErrors.size() > 0">
+        <div class="error-box">
+            <s:actionerror />
+        </div>
+    </s:if>
+
+     <s:if test="actionMessages.size() > 0">
+    <div class="action-box">
+            <s:actionmessage />
+        </div>
+</s:if>
+      
+
 
         <s:form action="registerUser" method="post" onsubmit="return checkPasswordMatch() && validateForm();"  validate="false">
            
@@ -123,6 +138,7 @@
                 errorElements[i].style.display = "none";
             }
         }
+
     </script> 
     </body>
 </html>

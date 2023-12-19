@@ -11,17 +11,16 @@ import org.apache.struts2.interceptor.SessionAware;
 
 import com.opensymphony.xwork2.ActionSupport;
 
-public class ViewItems extends ActionSupport implements SessionAware{
+public class ViewItems extends ActionSupport implements SessionAware {
     private List<Items> allItems;
-     private List<Items> bidItems;
+    private List<Items> bidItems;
     private Map<String, Object> session;
-    
 
     public ViewItems() {
     }
 
-    public String loadItems(){
-         Connection connection = null;
+    public String loadItems() {
+        Connection connection = null;
         try {
             try {
                 Class.forName("com.mysql.cj.jdbc.Driver");
@@ -35,7 +34,6 @@ public class ViewItems extends ActionSupport implements SessionAware{
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
- 
 
         allItems = new ArrayList<>();
         Integer currentUserId = (Integer) session.get("currentUserId");
@@ -54,7 +52,6 @@ public class ViewItems extends ActionSupport implements SessionAware{
                     item.setDescription(resultSet.getString("description"));
                     item.setStartPrice(resultSet.getDouble("startPrice"));
                     item.setCurrentBid(resultSet.getDouble("currentBid"));
-                   
 
                     allItems.add(item);
                 }
@@ -63,12 +60,12 @@ public class ViewItems extends ActionSupport implements SessionAware{
             e.printStackTrace();
             return ERROR;
         }
-        
+
         return SUCCESS;
     }
 
-    public String loadBidItems(){
-         Connection connection = null;
+    public String loadBidItems() {
+        Connection connection = null;
         try {
             try {
                 Class.forName("com.mysql.cj.jdbc.Driver");
@@ -82,7 +79,6 @@ public class ViewItems extends ActionSupport implements SessionAware{
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
- 
 
         bidItems = new ArrayList<>();
         Integer currentUserId = (Integer) session.get("currentUserId");
@@ -100,7 +96,6 @@ public class ViewItems extends ActionSupport implements SessionAware{
                     item.setDescription(resultSet.getString("description"));
                     item.setStartPrice(resultSet.getDouble("startPrice"));
                     item.setCurrentBid(resultSet.getDouble("currentBid"));
-                   
 
                     bidItems.add(item);
                 }
@@ -109,7 +104,7 @@ public class ViewItems extends ActionSupport implements SessionAware{
             e.printStackTrace();
             return ERROR;
         }
-        
+
         return SUCCESS;
     }
 
@@ -126,7 +121,6 @@ public class ViewItems extends ActionSupport implements SessionAware{
         session = map;
     }
 
-
     public Map<String, Object> getSession() {
         return session;
     }
@@ -138,6 +132,5 @@ public class ViewItems extends ActionSupport implements SessionAware{
     public void setBidItems(List<Items> bidItems) {
         this.bidItems = bidItems;
     }
-    
 
 }

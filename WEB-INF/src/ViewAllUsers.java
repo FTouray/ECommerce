@@ -12,13 +12,11 @@ public class ViewAllUsers extends ActionSupport {
 
     private List<User> allUsers;
 
-    
-
     public ViewAllUsers() {
     }
 
     public String viewUsers() {
-         Connection connection = null;
+        Connection connection = null;
         try {
             try {
                 Class.forName("com.mysql.cj.jdbc.Driver");
@@ -32,7 +30,6 @@ public class ViewAllUsers extends ActionSupport {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
- 
 
         allUsers = new ArrayList<>();
 
@@ -69,5 +66,4 @@ public class ViewAllUsers extends ActionSupport {
         this.allUsers = allUsers;
     }
 
-    
 }

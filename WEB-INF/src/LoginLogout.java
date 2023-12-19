@@ -10,7 +10,7 @@ import org.apache.struts2.interceptor.SessionAware;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class LoginLogout extends ActionSupport implements SessionAware {
-    
+
     // Variables from the JSP page
     private String username;
     private String password;
@@ -41,27 +41,37 @@ public class LoginLogout extends ActionSupport implements SessionAware {
             String sql = "SELECT * FROM users WHERE username = ?";
             try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
                 preparedStatement.setString(1, username);
-    
+
                 // Execute the query
                 ResultSet resultSet = preparedStatement.executeQuery();
-    
+
                 // Check if a matching user is found
                 if (resultSet.next()) {
                     int userId = resultSet.getInt("user_id");
+                    String storedUsername = resultSet.getString("username");
                     String storedPassword = resultSet.getString("password");
-    
-                    if (password.equals(storedPassword)) {
-                        // Store the username in the session
-                        session.put("currentUser", username);
-                        session.put("currentUserId", userId);
-                        return SUCCESS;
+                    if (username.equals(storedUsername)) {
+                        if (password.equals(storedPassword)) {
+                            // Store the username in the session
+                            session.put("currentUser", username);
+                            session.put("currentUserId", userId);
+                            addActionMessage("Login Successful");
+                            return SUCCESS;
+                        } else {
+                            addActionError("Incorrect password");
+                            session.clear();
+                            return INPUT;
+                        }
                     } else {
-                        addActionError("Incorrect password");
-                        return ERROR;
+                        addActionError("Username Incorrect");
+                        session.clear();
+                        return INPUT;
                     }
+
                 } else {
                     addActionError("Account not found");
-                    return ERROR;
+                    session.clear();
+                    return INPUT;
                 }
             }
         } catch (Exception e) {
@@ -79,13 +89,14 @@ public class LoginLogout extends ActionSupport implements SessionAware {
         }
     }
 
-    
     @Override
     public String execute() {
         // Invalidate the session
         session.clear();
-        session.put("loggedOut", true); // Optional: You can use this flag to display a message on the login page
+        session.put("loggedOut", true);
 
+        String logoutMessage = "You have successfully logged out.";
+        addActionMessage(logoutMessage);
         return SUCCESS;
     }
 
@@ -111,11 +122,8 @@ public class LoginLogout extends ActionSupport implements SessionAware {
         return session;
     }
 
-    
-
     @Override
     public void setSession(Map map) {
         session = map;
     }
 }
-

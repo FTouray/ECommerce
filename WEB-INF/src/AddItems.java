@@ -8,19 +8,19 @@ import org.apache.struts2.interceptor.SessionAware;
 
 import com.opensymphony.xwork2.ActionSupport;
 
-public class AddItems extends ActionSupport implements SessionAware{
+public class AddItems extends ActionSupport implements SessionAware {
 
     private String itemName;
     private String description;
     private double startPrice;
     private Map<String, Object> session;
-   
-    public AddItems(){
+
+    public AddItems() {
 
     }
-   
+
     public String add() {
-         Connection connection = null;
+        Connection connection = null;
         try {
             try {
                 Class.forName("com.mysql.cj.jdbc.Driver");
@@ -34,12 +34,11 @@ public class AddItems extends ActionSupport implements SessionAware{
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
- 
-       try {
+
+        try {
 
             int sellerId = (int) session.get("currentUserId");
 
-             
             String sql = "INSERT INTO items (itemName, description, startPrice, sellerId, currentBid) VALUES (?, ?, ?, ?, ?)";
             try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
                 preparedStatement.setString(1, itemName);
@@ -55,12 +54,13 @@ public class AddItems extends ActionSupport implements SessionAware{
 
             // Close the database connection
             connection.close();
-
-           return SUCCESS;
+            addActionMessage("Item Added Successfully");
+            return SUCCESS;
         } catch (Exception e) {
             e.printStackTrace();
+            addActionError("An error occurred item could not be added.");
             return ERROR;
-            
+
         }
     }
 
@@ -93,8 +93,4 @@ public class AddItems extends ActionSupport implements SessionAware{
         session = map;
     }
 
-   
-    
-
 }
-

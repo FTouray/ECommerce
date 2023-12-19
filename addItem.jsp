@@ -8,6 +8,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>Add Item</title>
    <link rel="stylesheet" type="text/css" href="css/addItemStyle.css">
+   <script src="script/actions.js"></script>
 </head>
 <body>
      <header>
@@ -59,9 +60,22 @@
 </nav>
 
    
+ <h2>Add Item for Sale</h2>
 
 <div class="addItemForSale">
-    <h2>Add Item for Sale</h2>
+   
+ <s:if test="actionErrors.size() > 0">
+        <div class="error-box">
+            <s:actionerror />
+        </div>
+    </s:if>
+
+    <s:if test="actionMessages.size() > 0">
+    <div class="action-box">
+            <s:actionmessage />
+        </div>
+</s:if>
+
     <s:form id="addItemForm" action="addItem" method="post">
         <s:textfield name="itemName" id="itemName" label="Item Name" required="true" />
         <s:textfield name="description" id="description" label="Description" required="true" />
@@ -78,22 +92,7 @@
 
 
 <script>
-    function toggleDropdown(dropdownId, event) {
-        event.stopPropagation();
-        var dropdownOptions = document.getElementById(dropdownId);
-        dropdownOptions.style.display = (dropdownOptions.style.display === "block") ? "none" : "block";
-    }
-
-    window.onclick = function(event) {
-        var dropdowns = document.getElementsByClassName('dropdown-content');
-        for (var i = 0; i < dropdowns.length; i++) {
-            var dropdown = dropdowns[i];
-            if (dropdown.style.display === "block") {
-                dropdown.style.display = "none";
-            }
-        }
-    }
-
+    
    document.addEventListener("DOMContentLoaded", function() {
         var startPriceInput = document.getElementById("startPrice");
         var itemNameInput = document.getElementById("itemName");
@@ -113,7 +112,7 @@
             var isValidInput = /^[0-9]+(\.[0-9]+)?$/.test(startPrice);
 
             validationMessage.textContent = isValidInput ? "" : "Invalid input for Starting Price. Please enter a valid number.";
-            this.style.backgroundColor = isValidInput ? '#4CAF50' : '#FF2200';
+            this.style.backgroundColor = isValidInput ? '##abe794d4' : '#ea6464';
         });
 
         document.getElementById("addItemForm").addEventListener("submit", function(event) {
@@ -123,7 +122,6 @@
         });
     });
 
-
-</script>
+ </script>
 </body>
 </html>

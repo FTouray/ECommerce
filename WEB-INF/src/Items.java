@@ -1,13 +1,12 @@
 public class Items {
     private int itemId;
-     private int sellerId;
+    private int sellerId;
     private String itemName;
     private String description;
     private double startPrice;
     private double currentBid;
-   
 
-    public Items(){
+    public Items() {
 
     }
 
@@ -21,14 +20,9 @@ public class Items {
 
     }
 
-    
-    
-        public boolean hasNoBids() {
-            return currentBid == 0.0;
-        }
-    
-     
-
+    public boolean hasNoBids() {
+        return currentBid == 0.0;
+    }
 
     public int getItemId() {
         return itemId;
@@ -78,5 +72,4 @@ public class Items {
         this.sellerId = sellerId;
     }
 
-        
 }

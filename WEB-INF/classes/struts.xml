@@ -14,6 +14,7 @@
  <action name="loginUser" class="LoginLogout" method="login">
         <result name="success">/navigation.jsp</result>
         <result name="error">/login.jsp</result>
+        <result name="input">/login.jsp</result>
     </action>
 
 <action name="navigation" >
@@ -36,56 +37,58 @@
      <action name="addItem" class="AddItems" method="add">
         <result name="success">/navigation.jsp</result>
         <result name="error">/addItem.jsp</result>
+        <result name="input">/addItem.jsp</result>
     </action>
 
     <action name="viewMyProfile" class="UserProfile" method="myProfile">
     <result name="success">/viewMyProfile.jsp</result>
-    <result name="error">/error.jsp</result>
+    <result name="error">/navigation.jsp</result>
     </action>
 
      <action name="viewAllUsers" class="ViewAllUsers" method="viewUsers">
     <result name="success">/viewAllUsers.jsp</result>
-    <result name="error">/error.jsp</result>
+    <result name="error">/navigation.jsp</result>
     </action>
 
     <action name="viewOtherProfiles" class="UserProfile" method="otherProfile">
     <result name="success">/viewOtherProfiles.jsp</result>
-    <result name="error">/error.jsp</result>
+    <result name="error">/viewAllUsers.jsp</result>
     </action>
 
      <action name="viewAllItems" class="ViewItems" method="loadItems">
     <result name="success">/viewAllItems.jsp</result>
-    <result name="error">/error.jsp</result>
+    <result name="error">/navigation.jsp</result>
     </action>
 
     <action name="makeABid" class="MakeABid" method="makeBid">
     <result name="success">/makeABid.jsp</result>
-    <result name="error">/error.jsp</result>
+    <result name="error">/navigation.jsp</result>
     </action>
 
     <action name="submitBid" class="MakeABid" method="submitBid">
     <result name="success">/makeABid.jsp</result>
-    <result name="error">/error.jsp</result>
+    <result name="error">/navigation.jsp</result>
+    <result name="input">/makeABid.jsp</result>
     </action>
 
     <action name="viewMyBids" class="ViewBids" method="myBids">
     <result name="success">/viewMyBids.jsp</result>
-    <result name="error">/error.jsp</result>
+    <result name="error">/navigation.jsp</result>
     </action>
 
     <action name="viewAllBids" class="ViewBids" method="allBids">
     <result name="success">/viewAllBids.jsp</result>
-    <result name="error">/error.jsp</result>
+    <result name="error">/navigation.jsp</result>
     </action>
 
   <action name="viewBidsForItem" class="ViewItems" method="loadBidItems">
     <result name="success">/bidsForAnItem.jsp</result>
-    <result name="error">/error.jsp</result>
+    <result name="error">/navigation.jsp</result>
     </action>
 
     <action name="viewBids" class="ViewBids" method="itemBids">
     <result name="success">/viewItemBids.jsp</result>
-    <result name="error">/error.jsp</result>
+    <result name="error">/bidsForAnItem.jsp</result>
     </action>
 
     <action name="logout" class="LoginLogout" method="execute">
