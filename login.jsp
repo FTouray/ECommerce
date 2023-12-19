@@ -65,7 +65,8 @@
             <s:submit value="Login"/>
         </s:form>
 
-        <p>Don't have an account? <a href="register.jsp">Register</a></p>
+        
+         <p>Don't have an account?<a href="<s:url action="reg"/>"> Register</a></p>
     </div>
 		
     </body>

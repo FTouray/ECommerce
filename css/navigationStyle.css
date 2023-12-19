@@ -101,25 +101,35 @@ nav {
 .dropdown-content a:hover {
     background-color: #ddd;
 }
+.sell-icon {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
 
-.add-items-button {
-    margin-top: 10px;
+.sell-icon img {
+    width: 30px;
+    height: 30px;
+    margin-left: 5px;
+}
+
+.nav-item {
     text-align: center;
 }
 
-.add-items-button a {
-    display: inline-block;
-    padding: 10px 10px;
-    background-color: #4398b5;
-    color: white;
-    text-decoration: none;
-    border-radius: 5px;
+.home-icon {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    position: relative;
 }
 
-.add-items-button a:hover {
-    background-color: #306a7e;
+.home-icon img {
+    width: 30px;
+    height: 30px;
+    margin-left: 5px;
 }
-
 
 footer {
     text-align: center;

@@ -18,25 +18,44 @@
         </div>
     </div>
     </header>
-
-  <nav>
-    <div class="dropdown" onclick="toggleDropdown('bidsDropdown', event)">
-        <span class="tbar">  <img src="images/triple bar.png" alt="Triple Bar Icon" ></span>
-        <div id="bidsDropdown" class="dropdown-content">
-            <s:a href="viewMyBids.jsp">View My Bids</s:a>
-            <s:a href="viewAllBids.jsp">View All Bids</s:a>
-        </div>
+   <nav>
+    <div class="nav-item">
+        <a href="<s:url action="navigation"/>" class="home-icon"> 
+            <img src="images/home.png" alt="Home Icon">
+        </a>
+        <p>Home</p>
     </div>
 
-    <div class="dropdown profile" onclick="toggleDropdown('profileDropdown', event)">
-      <span class="profileIcon">  <img src="images/profile.png" alt="Profile Icon" ></span>
-        <div id="profileDropdown" class="dropdown-content">
-            <a href="<s:url action="viewMyProfile"/>">View My Profile</a>
-            <a href="<s:url action="viewAllUsers"/>">View All Users</a>
-            <a href="<s:url action="logout"/>">Logout</a>
+    <div class="nav-item">
+        <div class="dropdown" onclick="toggleDropdown('bidsDropdown', event)">
+            <span class="tbar">  <img src="images/triple bar.png" alt="Triple Bar Icon" ></span>
+            <div id="bidsDropdown" class="dropdown-content">
+                <a href="<s:url action="viewMyBids"/>">View My Bids</a>
+                <a href="<s:url action="viewAllBids"/>">View All Bids</a>
+                <a href="<s:url action="viewBidsForItem"/>">View Bids For An Item</a>
+            </div>
         </div>
+        <p>Bids</p>
     </div>
-</nav>
+
+    <div class="nav-item">
+        <a href="<s:url action="sellItem"/>" class="sell-icon"> 
+            <img src="images/addItem.png" alt="Sell Icon">
+        </a>
+        <p>Sell Items</p>
+    </div>
+
+    <div class="nav-item">
+        <div class="dropdown profile" onclick="toggleDropdown('profileDropdown', event)">
+            <span class="profileIcon">  <img src="images/profile.png" alt="Profile Icon" ></span>
+            <div id="profileDropdown" class="dropdown-content">
+                <a href="<s:url action="viewMyProfile"/>">View My Profile</a>
+                <a href="<s:url action="viewAllUsers"/>">View All Users</a>
+                <a href="<s:url action="logout"/>">Logout</a>
+            </div>
+        </div>
+        <p>Profile</p>
+    </div>
 </nav>
 
     <div>
@@ -45,30 +64,19 @@
             <p>No users available.</p>
         </s:if>
         
-
-        <table border="1">
-            <thead>
-                <tr>
-                    <th>Username</th>
-                </tr>
-            </thead>
-            <tbody>
-             
-         <s:iterator value="allUsers" >
-    <s:if test="username != #session.currentUser">
-        <tr>
-            <td><s:property value="username" /></td>
-            <td>
-                <s:form action="viewOtherProfiles" method="post">
-                    <s:hidden name="usernameProf" value="%{id}" />
-                   <s:submit value="View Profile" />
-                </s:form>
-            </td>
-        </tr>
-    </s:if>
-</s:iterator>
-            </tbody>
-        </table>
+<div class="user-cards">
+            <s:iterator value="allUsers">
+                <s:if test="username != #session.currentUser">
+                    <div class="user-card">
+                        <s:property value="username" />
+                        <s:form action="viewOtherProfiles" method="post">
+                            <s:hidden name="idProf" value="%{id}" />
+                            <s:submit value="View Profile" />
+                        </s:form>
+                    </div>
+                </s:if>
+            </s:iterator>
+        </div>
     </div>
 
 <script>

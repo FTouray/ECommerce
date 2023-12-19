@@ -9,14 +9,14 @@ import org.apache.struts2.interceptor.SessionAware;
 
 import com.opensymphony.xwork2.ActionSupport;
 
-public class Login extends ActionSupport implements SessionAware {
+public class LoginLogout extends ActionSupport implements SessionAware {
     
     // Variables from the JSP page
     private String username;
     private String password;
     private Map<String, Object> session;
 
-    public Login() {
+    public LoginLogout() {
         // TODO Auto-generated constructor stub
     }
 
@@ -77,6 +77,16 @@ public class Login extends ActionSupport implements SessionAware {
                 e.printStackTrace();
             }
         }
+    }
+
+    
+    @Override
+    public String execute() {
+        // Invalidate the session
+        session.clear();
+        session.put("loggedOut", true); // Optional: You can use this flag to display a message on the login page
+
+        return SUCCESS;
     }
 
     // Getter and Setter methods

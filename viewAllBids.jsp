@@ -1,16 +1,18 @@
-<%@ page contentType="text/html; charset=UTF-8" %>
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<%@ taglib uri="/struts-tags" prefix="s" %>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<%@taglib uri="/struts-tags" prefix="s" %>
 
 
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>View My Profile</title>
-    <link rel="stylesheet" type="text/css" href="css/profileStyle.css">
+    <title>View My Bids</title>
+    <link rel="stylesheet" type="text/css" href="css/allBidsStyle.css">
 </head>
 <body>
- <header>
+
+     <header>
     <div class="header-content">
         <h1>Luxe</h1>
         <div class="logged-in">
@@ -18,8 +20,7 @@
         </div>
     </div>
     </header>
-   
-<nav>
+   <nav>
     <div class="nav-item">
         <a href="<s:url action="navigation"/>" class="home-icon"> 
             <img src="images/home.png" alt="Home Icon">
@@ -59,34 +60,36 @@
     </div>
 </nav>
 
- <h2>My Profile Information</h2>
-    <div class="profileDetails">
-       
-             <p><strong>First Name:</strong> <s:property value="myUser.firstName" /></p>
-            <p><strong>Last Name:</strong> <s:property value="myUser.lastName" /></p>
-            <p><strong>Username:</strong> <s:property value="myUser.username" /></p>
-            <p><strong>Email:</strong> <s:property value="myUser.email" /></p>
-    </div>
+<div class="bidDetails">
+    <h2>All Bids</h2>
+   
 
-
-
-<h2>My Items for Sale</h2>
-
-    
-    <s:if test="myItems != null && !myItems.isEmpty()">
-        <s:iterator value="myItems">
-        <div class="itemDetails">
-            <p><strong>Item Name:</strong> <s:property value="itemName" /></p>
+   
+     <s:if test="allBids != null && allBids.size() > 0">
+    <s:iterator value="allBids">
+        <div class="bidCard">
+            <div class="cardHeader">
+                <h3>Item Name:</strong> <s:property value="itemName" /></h3>
+            </div>
+            <div class="cardBody">
             <p><strong>Description:</strong> <s:property value="description" /></p>
-            <p><strong>Start Price €:</strong> <s:property value="startPrice" /></p>
-            <p><strong>Current Bid €:</strong> <s:property value="currentBid" /></p>
-       </div>
-        </s:iterator>
-    </s:if>
-    <s:else>
-        <p>No items available.</p>
-    </s:else>
+            <p><strong>Start Price:</strong> €<s:property value="startPrice" /></p>
+            <p><strong>Current Bid Amount:</strong> €<s:property value="currentBid" /></p>
+            <p><strong> Bid Amount:</strong> €<s:property value="bidAmount" /></p>
+            <p><strong>Bid Date:</strong> <s:property value="bidDate" /></p>
 
+            <p><strong>Bidder Username:</strong> <s:property value="bidderUsername" /></p>
+            </div>
+        </div>
+    </s:iterator>
+    </s:if>
+
+     <s:else>
+      
+        <p>There are no bids.</p>
+    </s:else>
+   
+</div>
 
 
 <script>
@@ -107,6 +110,8 @@ window.onclick = function(event) {
         }
     }
 }
+
+
 
 </script>
 </body>

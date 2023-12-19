@@ -40,12 +40,13 @@ public class AddItems extends ActionSupport implements SessionAware{
             int sellerId = (int) session.get("currentUserId");
 
              
-            String sql = "INSERT INTO items (itemName, description, startPrice, sellerId) VALUES (?, ?, ?, ?)";
+            String sql = "INSERT INTO items (itemName, description, startPrice, sellerId, currentBid) VALUES (?, ?, ?, ?, ?)";
             try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
                 preparedStatement.setString(1, itemName);
                 preparedStatement.setString(2, description);
                 preparedStatement.setDouble(3, startPrice);
                 preparedStatement.setInt(4, sellerId);
+                preparedStatement.setDouble(5, 0.0);
                 // Execute the query
                 preparedStatement.executeUpdate();
 

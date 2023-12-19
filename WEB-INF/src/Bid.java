@@ -1,32 +1,73 @@
+import java.sql.Timestamp;
+
+import org.apache.struts2.components.Date;
+
 public class Bid {
 
     private int bidId;
-    private int userId;
+    private int bidderId;
     private int itemId; 
+    private double bidAmount;
+    private Timestamp bidDate;
+
     private String itemName;
     private String description;
-    private double startBid;
+    private double startPrice;
     private double currentBid;
-    private double myBid;
+
+    private String bidderUsername;
     
 
     public Bid(){
 
     }
 
-    
+      
 
-    public Bid(int bidId, int userId, int itemId, String itemName, String description, double startBid,
-            double currentBid, double myBid) {
+
+    public Bid(int bidId, int bidderId, int itemId, double bidAmount, Timestamp bidDate, String itemName,
+            String description, double startPrice, double currentBid) {
         this.bidId = bidId;
-        this.userId = userId;
+        this.bidderId = bidderId;
         this.itemId = itemId;
+        this.bidAmount = bidAmount;
+        this.bidDate = bidDate;
         this.itemName = itemName;
         this.description = description;
-        this.startBid = startBid;
+        this.startPrice = startPrice;
         this.currentBid = currentBid;
-        this.myBid = myBid;
     }
+
+    
+
+
+
+
+    public Bid(int bidId, int bidderId, int itemId, double bidAmount, Timestamp bidDate, String itemName,
+            String description, double startPrice, double currentBid, String bidderUsername) {
+        this.bidId = bidId;
+        this.bidderId = bidderId;
+        this.itemId = itemId;
+        this.bidAmount = bidAmount;
+        this.bidDate = bidDate;
+        this.itemName = itemName;
+        this.description = description;
+        this.startPrice = startPrice;
+        this.currentBid = currentBid;
+        this.bidderUsername = bidderUsername;
+    }
+
+
+
+
+    public Bid(int bidId, int bidderId, int itemId, double bidAmount, Timestamp bidDate) {
+        this.bidId = bidId;
+        this.bidderId = bidderId;
+        this.itemId = itemId;
+        this.bidAmount = bidAmount;
+        this.bidDate = bidDate;
+    }
+
 
 
 
@@ -38,12 +79,12 @@ public class Bid {
         this.bidId = bidId;
     }
 
-    public int getUserId() {
-        return userId;
+    public int getBidderId() {
+        return bidderId;
     }
 
-    public void setUserId(int userId) {
-        this.userId = userId;
+    public void setBidderId(int bidderId) {
+        this.bidderId = bidderId;
     }
 
     public int getItemId() {
@@ -54,44 +95,104 @@ public class Bid {
         this.itemId = itemId;
     }
 
+   
+
+    public Timestamp getBidDate() {
+        return bidDate;
+    }
+
+
+
+    public void setBidDate(Timestamp timestamp) {
+        this.bidDate = timestamp;
+    }
+
+
+
+
+
+
     public String getItemName() {
         return itemName;
     }
+
+
+
 
     public void setItemName(String itemName) {
         this.itemName = itemName;
     }
 
+
+
+
     public String getDescription() {
         return description;
     }
+
+
+
 
     public void setDescription(String description) {
         this.description = description;
     }
 
-    public double getStartBid() {
-        return startBid;
+
+
+
+    public double getStartPrice() {
+        return startPrice;
     }
 
-    public void setStartBid(double startBid) {
-        this.startBid = startBid;
+
+
+
+    public void setStartPrice(double startPrice) {
+        this.startPrice = startPrice;
     }
+
+
+
 
     public double getCurrentBid() {
         return currentBid;
     }
 
+
+
+
     public void setCurrentBid(double currentBid) {
         this.currentBid = currentBid;
     }
 
-    public double getMyBid() {
-        return myBid;
+
+
+
+    public double getBidAmount() {
+        return bidAmount;
     }
 
-    public void setMyBid(double myBid) {
-        this.myBid = myBid;
+
+
+
+
+
+    public void setBidAmount(double bidAmount) {
+        this.bidAmount = bidAmount;
+    }
+
+
+
+
+    public String getBidderUsername() {
+        return bidderUsername;
+    }
+
+
+
+
+    public void setBidderUsername(String bidderUsername) {
+        this.bidderUsername = bidderUsername;
     }
 
    

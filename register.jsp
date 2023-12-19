@@ -57,7 +57,8 @@
 
             <s:submit value="Register" />
         </s:form>
-        <p>Already have an account? <a href="login.jsp">Login</a></p>
+
+        <p>Already have an account?<a href="<s:url action="log"/>"> Login</a></p>
     </div>
 		 
         <script>

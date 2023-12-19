@@ -8,10 +8,10 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>View My Bids</title>
-    
+    <link rel="stylesheet" type="text/css" href="css/allBidsStyle.css">
 </head>
 <body>
-<header>
+ <header>
     <div class="header-content">
         <h1>Luxe</h1>
         <div class="logged-in">
@@ -19,54 +19,91 @@
         </div>
     </div>
     </header>
-
-    <nav>
-    <div class="dropdown" onclick="toggleDropdown('bidsDropdown', event)">
-        <span class="tbar">  <img src="images/triple bar.png" alt="Triple Bar Icon" ></span>
-        <div id="bidsDropdown" class="dropdown-content">
-            <s:a href="viewMyBids.jsp">View My Bids</s:a>
-            <s:a href="viewAllBids.jsp">View All Bids</s:a>
-        </div>
+<nav>
+    <div class="nav-item">
+        <a href="<s:url action="navigation"/>" class="home-icon"> 
+            <img src="images/home.png" alt="Home Icon">
+        </a>
+        <p>Home</p>
     </div>
 
-    <div class="dropdown profile" onclick="toggleDropdown('profileDropdown', event)">
-      <span class="profileIcon">  <img src="images/profile.png" alt="Profile Icon" ></span>
-        <div id="profileDropdown" class="dropdown-content">
-            <s:a href="viewMyProfile.jsp">View My Profile</s:a>
-            <s:a href="viewAllUsers.jsp">View All Users</s:a>
-            <s:a href="logout">Logout</s:a>
+    <div class="nav-item">
+        <div class="dropdown" onclick="toggleDropdown('bidsDropdown', event)">
+            <span class="tbar">  <img src="images/triple bar.png" alt="Triple Bar Icon" ></span>
+            <div id="bidsDropdown" class="dropdown-content">
+                <a href="<s:url action="viewMyBids"/>">View My Bids</a>
+                <a href="<s:url action="viewAllBids"/>">View All Bids</a>
+                <a href="<s:url action="viewBidsForItem"/>">View Bids For An Item</a>
+            </div>
         </div>
+        <p>Bids</p>
+    </div>
+
+    <div class="nav-item">
+        <a href="<s:url action="sellItem"/>" class="sell-icon"> 
+            <img src="images/addItem.png" alt="Sell Icon">
+        </a>
+        <p>Sell Items</p>
+    </div>
+
+    <div class="nav-item">
+        <div class="dropdown profile" onclick="toggleDropdown('profileDropdown', event)">
+            <span class="profileIcon">  <img src="images/profile.png" alt="Profile Icon" ></span>
+            <div id="profileDropdown" class="dropdown-content">
+                <a href="<s:url action="viewMyProfile"/>">View My Profile</a>
+                <a href="<s:url action="viewAllUsers"/>">View All Users</a>
+                <a href="<s:url action="logout"/>">Logout</a>
+            </div>
+        </div>
+        <p>Profile</p>
     </div>
 </nav>
 
-<div>
+<div class="bidDetails">
     <h2>My Bids</h2>
-    <table border="1">
-        <thead>
-            <tr>
-                <th>Item Name</th>
-                <th>Description</th>
-                <th>Starting Price</th>
-                <th>Current Bid</th>
-                <th>Your Bid</th>
-                
-            </tr>
-        </thead>
-        <tbody>
-            <s:iterator value="myBids" var="bid">
-                <tr>
-                    <td><s:property value="#bid.itemName" /></td>
-                    <td><s:property value="#bid.description" /></td>
-                    <td><s:property value="#bid.startPrice" /></td>
-                    <td><s:property value="#bid.currentBid" /></td>
-                    <td><s:property value="#bid.myBid" /></td>
-                    
-                </tr>
-            </s:iterator>
-        </tbody>
-    </table>
+     <s:if test="myBids != null && myBids.size() > 0">
+    <s:iterator value="myBids">
+        <div class="bidCard">
+            <div class="cardHeader">
+                <h3>Item Name:</strong> <s:property value="itemName" /></h3>
+            </div>
+            <div class="cardBody">
+                 <p><strong>Description:</strong> <s:property value="description" /></p>
+            <p><strong>Start Price:</strong> €<s:property value="startPrice" /></p>
+            <p><strong>Current Bid Amount:</strong> €<s:property value="currentBid" /></p>
+            <p><strong>Your Bid Amount:</strong> €<s:property value="bidAmount" /></p>
+            <p><strong>Bid Date:</strong> <s:property value="bidDate" /></p>
+            </div>
+        </div>
+    </s:iterator>
+    </s:if>
+
+     <s:else>
+      
+        <p>You have made no bids.</p>
+    </s:else>
 </div>
 
 
+<script>
+ function toggleDropdown(dropdownId, event) {
+    event.stopPropagation(); // Prevents the event from reaching the document click handler
+    
+    var dropdownOptions = document.getElementById(dropdownId);
+    dropdownOptions.style.display = (dropdownOptions.style.display === "block") ? "none" : "block";
+}
+
+// Close the dropdown if the user clicks outside of it
+window.onclick = function(event) {
+    var dropdowns = document.getElementsByClassName('dropdown-content');
+    for (var i = 0; i < dropdowns.length; i++) {
+        var dropdown = dropdowns[i];
+        if (dropdown.style.display === "block") {
+            dropdown.style.display = "none";
+        }
+    }
+}
+
+</script>
 </body>
 </html>

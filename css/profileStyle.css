@@ -30,8 +30,9 @@ header {
 nav {
     display: flex;
     justify-content: space-between;
-    background-color: white;
+    background-color: #bfe1ec;
     padding: 10px;
+    height: 45px;
 }
 
 
@@ -100,6 +101,22 @@ nav {
 .dropdown-content a:hover {
     background-color: #ddd;
 }
+.sell-icon {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.sell-icon img {
+    width: 30px;
+    height: 30px;
+    margin-left: 5px;
+}
+
+.nav-item {
+    text-align: center;
+}
 
 .profileDetails{
     max-width: 600px;
@@ -109,6 +126,7 @@ nav {
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
+
 
 h2 {
     color: #333;
@@ -126,7 +144,7 @@ s\:form {
     margin-top: 20px;
 }
 
-/* Customize form styles based on your needs */
+
 s\:form input[type="submit"] {
     background-color: #333;
     color: white;
@@ -134,4 +152,17 @@ s\:form input[type="submit"] {
     border: none;
     border-radius: 5px;
     cursor: pointer;
+}
+
+.home-icon {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.home-icon img {
+    width: 30px;
+    height: 30px;
+    margin-left: 5px;
 }

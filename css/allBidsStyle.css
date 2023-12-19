@@ -32,7 +32,7 @@ nav {
     justify-content: space-between;
     background-color: #bfe1ec;
     padding: 10px;
-    height: 50px;
+    height: 45px;
 }
 
 
@@ -101,7 +101,6 @@ nav {
 .dropdown-content a:hover {
     background-color: #ddd;
 }
-
 .sell-icon {
     cursor: pointer;
     display: flex;
@@ -132,55 +131,41 @@ nav {
     margin-left: 5px;
 }
 
-.addItemForSale {
-    max-width: 400px;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: white;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-h2 {
-    color: #333;
-}
-
-p {
-    margin: 10px 0;
-}
-
-strong {
-    font-weight: bold;
-}
-
-s\:form {
+.bidDetails {
     margin-top: 20px;
 }
 
-
-s\:form input[type="submit"] {
-    background-color: #333;
-    color: white;
-    padding: 10px 15px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
+.bidCard {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    padding: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.validation-message {
-    color: red;
-    margin-top: 5px;
+.cardHeader {
+    background-color: #f0f0f0;
+    padding: 8px;
+    border-bottom: 1px solid #ccc;
 }
 
-.home-icon {
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    position: relative;
+.cardHeader h3 {
+    margin: 0;
+    font-size: 16px;
+    color: #333;
 }
 
-.home-icon img {
-    width: 30px;
-    height: 30px;
-    margin-left: 5px;
+.cardBody {
+    padding: 10px;
+}
+
+.cardBody p {
+    margin: 5px 0;
+    font-size: 14px;
+    color: #555;
+}
+
+h2 {
+    font-size: 24px;
+    color: #333;
 }
