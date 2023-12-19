@@ -81,7 +81,7 @@
     
     <s:if test="myItems != null && !myItems.isEmpty()">
         <s:iterator value="myItems">
-        <div class="itemDetails">
+        <div class="profileDetails">
             <p><strong>Item Name:</strong> <s:property value="itemName" /></p>
             <p><strong>Description:</strong> <s:property value="description" /></p>
             <p><strong>Start Price €:</strong> <s:property value="startPrice" /></p>

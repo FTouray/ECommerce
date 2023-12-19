@@ -85,7 +85,7 @@
         </s:form>
 
         
-         <p>Don't have an account?<a href="<s:url action="reg"/>"> Register</a></p>
+         <p>Don't have an account? <a href="<s:url action="reg"/>">Register</a></p>
     </div>
 		
     </body>

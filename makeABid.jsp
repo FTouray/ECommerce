@@ -6,7 +6,7 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>Add Item</title>
+    <title>Make A Bid</title>
    <link rel="stylesheet" type="text/css" href="css/makeBidStyle.css">
    <script src="script/actions.js"></script>
 </head>

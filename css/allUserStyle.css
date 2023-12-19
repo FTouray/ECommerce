@@ -12,6 +12,11 @@ h1 {
     margin: 0;
 }
 
+h2 {
+    color: #333;
+    text-align:center
+}
+
 .logged-in {
     margin-top: 5px;
     color: #e3dede;
@@ -32,7 +37,7 @@ nav {
     justify-content: space-between;
     background-color: #bfe1ec;
     padding: 10px;
-    height: 45px;
+    height: auto;
 }
 
 
@@ -40,7 +45,7 @@ nav {
     cursor: pointer;
     display: flex;
     align-items: center;
-    position: relative;
+    position: absolute;
 }
 
 .tbar {
@@ -85,6 +90,17 @@ nav {
     left: 0;
 }
 
+.prof-dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    top: 100%;
+    right: 0;
+    width:min-content;
+}
+
 .dropdown-content a {
     display: block;
     padding: 10px;
@@ -93,12 +109,24 @@ nav {
     white-space: nowrap;
 }
 
+.prof-dropdown-content a {
+    display: block;
+    padding: 10px;
+    text-decoration: none;
+    color: #333;
+    white-space: nowrap;
+}
+
 .dropdown.profile .profile-content {
-    right: 0;
+    right: 0px;
     left: auto;
 }
 
 .dropdown-content a:hover {
+    background-color: #ddd;
+}
+
+.prof-dropdown-content a:hover {
     background-color: #ddd;
 }
 .sell-icon {

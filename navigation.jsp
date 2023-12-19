@@ -5,7 +5,7 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>Navigation Page</title>
+    <title>Homepage</title>
     <link rel="stylesheet" type="text/css" href="css/navigationStyle.css">
     <script src="script/actions.js"></script>
 
@@ -51,7 +51,7 @@
     <div class="nav-item">
         <div class="dropdown profile" onclick="toggleDropdown('profileDropdown', event)">
             <span class="profileIcon">  <img src="images/profile.png" alt="Profile Icon" ></span>
-            <div id="profileDropdown" class="dropdown-content">
+            <div id="profileDropdown" class="prof-dropdown-content">
                 <a href="<s:url action="viewMyProfile"/>">View My Profile</a>
                 <a href="<s:url action="viewAllUsers"/>">View All Users</a>
                 <a href="<s:url action="logout"/>">Logout</a>

@@ -7,7 +7,7 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>View My Bids</title>
+    <title>View All Bids</title>
     <link rel="stylesheet" type="text/css" href="css/allBidsStyle.css">
     <script src="script/actions.js"></script>
 </head>
