@@ -10,20 +10,7 @@
         <title>Registration</title>
         <link rel="stylesheet" type="text/css" href="css/registrationStyle.css">
 <script src="script/actions.js"></script>
-         <script>
-        function checkPasswordMatch() {
-            var password = document.getElementById("password").value;
-            var confirmPassword = document.getElementById("confirmPassword").value;
-
-            if (password !== confirmPassword) {
-                document.getElementById("passwordError").style.display = "block";
-                return false;
-            } else {
-                document.getElementById("passwordError").style.display = "none";
-                return true;
-            }
-        }
-    </script>
+        
     </head>
     <body>
      
@@ -47,7 +34,7 @@
       
 
 
-        <s:form action="registerUser" method="post" onsubmit="return checkPasswordMatch() && validateForm();"  validate="false">
+        <s:form action="registerUser" method="post" onsubmit="validateForm();"  validate="false">
            
             <s:textfield name="firstName" id="firstName" label="First Name"/>
              <div id="firstNameError" class="error"></div>
@@ -68,7 +55,7 @@
             <s:password name="confirmPassword" id="confirmPassword" label="Confirm Password" />
             <div id="confirmPasswordError" class="error"></div>
 
-            <div id="passwordError">Password does not match</div>
+            
 
             <s:submit value="Register" />
         </s:form>
@@ -117,10 +104,12 @@
             if (!confirmPassword.trim()) {
                 displayError("confirmPasswordError", "You must confirm your password.");
                 isValid = false;
-            }
+            } else if (password !== confirmPassword) {
+        displayError("confirmPasswordError", "Passwords do not match.");
+        isValid = false;
+    }
 
            
-
             return isValid;
         }
 

@@ -66,7 +66,7 @@
     </action>
 
     <action name="submitBid" class="MakeABid" method="submitBid">
-    <result name="success">/makeABid.jsp</result>
+    <result name="success">/navigation.jsp</result>
     <result name="error">/navigation.jsp</result>
     <result name="input">/makeABid.jsp</result>
     </action>

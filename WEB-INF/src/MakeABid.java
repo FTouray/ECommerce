@@ -94,12 +94,7 @@ public class MakeABid extends ActionSupport implements SessionAware {
         }
         Integer id = (Integer) session.get("currentUserId");
 
-        try {
-            Double.parseDouble(Double.toString(myBid));
-        } catch (NumberFormatException e) {
-            addActionError("Invalid bid amount. Please enter a valid number.");
-            return INPUT;
-        }
+       
         if (myBid <= currentBid) {
             addActionError("Bid amount must be greater than the current bid.");
             return INPUT;

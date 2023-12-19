@@ -94,7 +94,7 @@
 
      <h2><s:property value="otherUser.username" />'s Bids</h2>
 
-    <s:if test="otherBidss != null && !otherBids.isEmpty()">
+    <s:if test="otherBids != null && !otherBids.isEmpty()">
         <s:iterator value="otherBids">
         <div class="profileDetails">
             <p><strong>Item Name:</strong> <s:property value="itemName" /></p>

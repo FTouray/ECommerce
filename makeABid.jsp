@@ -63,7 +63,6 @@
 
    
    <div class="card">
-        <h2>Item Details</h2>
         <div class="item-details">
             <p><strong>Item Name:</strong> <s:property value="itemName" /></p>
             <p><strong>Description:</strong> <s:property value="description" /></p>

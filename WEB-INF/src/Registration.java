@@ -15,6 +15,7 @@ public class Registration extends ActionSupport {
     private String email;
     private String username;
     private String password;
+    private String confirmPassword;
 
     public Registration() {
     }
@@ -49,11 +50,18 @@ public class Registration extends ActionSupport {
                 return INPUT;
             }
 
+            
             if (!isEmailValid(email)) {
                 addActionError("Invalid email address format.");
                 return INPUT;
             }
 
+             if (!password.equals(confirmPassword)) {
+                addActionError(
+                        "Password must match");
+                return INPUT;
+           
+ }
             // Create the SQL query to insert user data
             String sql = "INSERT INTO users (username, password, email, firstName, lastName) VALUES (?, ?, ?, ?, ?)";
             try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
@@ -69,6 +77,7 @@ public class Registration extends ActionSupport {
                 // Clear the form fields after successful registration
                 setUsername("");
                 setPassword("");
+                setConfirmPassword("");
                 setEmail("");
                 setFirstName("");
                 setLastName("");
@@ -78,6 +87,7 @@ public class Registration extends ActionSupport {
             connection.close();
             addActionMessage("Registration Successful");
             return SUCCESS;
+        
         } catch (Exception e) {
             e.printStackTrace();
             addActionError("An error occurred during registration.");
@@ -111,6 +121,8 @@ public class Registration extends ActionSupport {
             }
         }
     }
+
+
 
     private boolean isPasswordStrong(String password) {
         // Define password strength criteria
@@ -199,4 +211,13 @@ public class Registration extends ActionSupport {
         this.password = password;
     }
 
+    public String getConfirmPassword() {
+        return confirmPassword;
+    }
+
+    public void setConfirmPassword(String confirmPassword) {
+        this.confirmPassword = confirmPassword;
+    }
+
+    
 }

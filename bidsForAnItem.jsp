@@ -8,7 +8,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>View Bids For an Item</title>
-    <link rel="stylesheet" type="text/css" href="css/allItemsStyle.css"/>
+    <link rel="stylesheet" type="text/css" href="css/allBidStyle.css"/>
     <script src="script/actions.js"></script>
 </head>
 <body>
